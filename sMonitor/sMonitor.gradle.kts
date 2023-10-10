@@ -3,10 +3,6 @@ version = project.version
 project.extra["PluginName"] = "sMonitor"
 project.extra["PluginDescription"] = "Logging of service activities"
 
-dependencies {
-    //implementation(project(":DeadZoneAPI"))
-}
-
 tasks {
     jar {
         manifest {
