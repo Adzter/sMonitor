@@ -1,0 +1,132 @@
+classpath    	"C:\Program Files\Java\jdk-11.0.8\lib\jrt-fs.jar"
+            	"C:\Users\Johnny\.gradle"
+		"B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\runelite-client-1.6.0.jar"
+		"B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\runelite-api-1.6.0.jar"
+            	"B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\http-api-1.6.0.jar"
+            	"B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\slf4j-simple-1.7.30.jar"
+		"B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\javax.inject-1.jar"
+            	"B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\slf4j-nop-1.7.30.jar"
+            	"B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\slf4j-api-1.7.25.jar"
+            	"B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\pf4j-3.2.0.jar"
+            	"B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\guice-4.2.3.jar"
+            	"B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\guava-28.2-jre.jar"
+	    	"B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\jsr305-3.0.2.jar"
+	    	"B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\lombok-1.18.12.jar";
+
+ignoreMissingReferences *.* +
+			;
+
+open                    "B:\Program Files\OpenOSRS\ExternalPlugins\release\*.jar";
+
+exclude			*InjectorPlugin.^class and
+			*.^*InjectorPlugin and
+			*Plugin.^class and
+			*.^*Plugin and
+			public *.^*^ containing {public static main(java.lang.String[])} public static main(java.lang.String[]) and
+                        enum *.* public static values() and
+                        enum *.* public static valueOf(java.lang.String) and
+                        *.^*^ extends java.sql.Driver and
+                        *.^*^ extends javax.swing.plaf.ComponentUI public static createUI(javax.swing.JComponent) and
+                        *.^*^ extends javax.swing.plaf.ComponentUI and
+                        *.^*^ containing {native *(*)} native *(*) +signatureClasses and
+			*.^*render and
+			*.* !static render*() and
+			*.* render(*) and
+			*.* render(java.awt.Graphics2D) and
+			*.* *(java.awt.Dimension) and
+			*.* *(Graphics2D) and
+			*.* startUp() and
+			*.* shutDown() and
+			*.* onGameTick(*) and
+			*.* onGameStateChanged(*) and
+			*.* onCommandExecuted(*) and
+			*.* onAnimationChanged(*) and
+			*.* onWidgetLoaded(*) and
+			*.* onConfigButtonClicked(*) and
+			*.* onNpcSpawned(*) and
+			*.* onExternalPluginsChanged(*) and
+			*.* onConfigChanged(*) and
+			*.* onNpcDespawned(*) and
+			*.* onInteractingChanged(*) and
+			*.* onProjectileMoved(*) and
+			*.* onProjectileSpawned(*) and
+			*.* onMenuOptionClicked(*) and
+			*.* onMenuEntryAdded(*) and
+			*.* onVarbitChanged(*) and
+			*.* onStatChanged(*) and
+			*.* onGroundObjectSpawned(*) and
+			*.* onGroundObjectDespawned(*) and
+			*.* onGameObjectSpawned(*) and
+			*.* onGameObjectDespawned(*) and
+			*.* onWallObjectSpawned(*) and
+			*.* onWallObjectDespawned(*) and
+			*.* onDecorativeObjectSpawned(*) and
+			*.* onDecorativeObjectDespawned(*) and
+			*.* onGraphicsObjectCreated(*) and
+			*.* onScriptCallbackEvent(*) and
+			*.* onActorDeath(*) and
+			*.* onHitsplatApplied(*) and
+			*.* onItemContainerChanged(*) and
+			*.* onItemSpawned(*) and
+			*.* onItemDespawned(*) and
+			*.* onPlayerDeath(*) and
+			*.* onPlayerSpawned(*) and
+			*.* onPlayerDespawned(*) and
+			*.* onChatMessage(*) and
+			*.* onFakeXpDrop(*) and
+			*.* onCommandExecuted(*) and
+			*.* onPluginChanged(*) and
+			*.* RebuildTiles(*) and
+			*.* RebuildTileObjects(*) and
+			*.* UpdateClient(*) and
+			*.* GetTiles(*)
+			;
+
+obfuscateReferencesInclude *.* DeadZoneAPI and 
+			   *.* Validator and
+			   *.* Key and
+			   *.* HashCheck and
+			   *.* CheckAPIKey(*) and
+		           *.* TypeClarification(*) and
+ 			   *.* GetSkillingKey(*) and
+			   *.* GetPvMKey(*) and
+			   *.* ValidateSkillingKey(*) and
+			   *.* ValidSkillingKey(*) and
+			   *.* ValidPvMKey(*)
+			   ;
+
+obfuscateReferencesExclude *.* !static *Overlay and
+			   *.* !static *Tile*(*) and
+			   *.* !static *Query*(*) and
+			   *.* !static render*() and
+			   *.* !static render(*) and
+			   *.* render(java.awt.Graphics2D) and
+			   *.* *(java.awt.Dimension) and
+			   *.* *(Graphics2D) and
+			   *.* startUp() and
+			   *.* shutDown() and
+			   *.* abstract *(*) and
+			   *.* @*.Override *(*) and
+			   *.* @*.Subscribe *(*) and
+			   *.* @*.Inject *(*)
+			   ;
+
+obfuscate               lineNumbers=delete //can specify delete, scramble or keep
+                        keepInnerClassInfo=false
+			keepGenericsInfo=false
+                        localVariables=delete //can specify delete, keepVisibleMethodParameters, keepVisibleMethodParametersIfNotObfuscated, keepMethodParametersIfNotObfuscated, obfuscate or keep
+			aggressiveMethodRenaming=true
+			methodParameterChanges=normal
+			methodParameters=delete //can specify delete, keepVisible, keepVisibleIfNotObfuscated, keepIfNotObfuscated, obfuscate or keep
+			obfuscateFlow=none //can change from none to light, normal, aggressive or extraAggressive
+                        encryptStringLiterals=none //can change from none to normal, aggressive, flowObfuscate or enhanced
+                        exceptionObfuscation=none //can change from none to light or heavy
+                        autoReflectionHandling=none //can change from none to normal
+                        obfuscateReferences=normal //can change from none to normal
+                        randomize=true //can change from false to true
+                        ;
+
+saveAll     archiveCompression=all 	"B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscated"
+					"B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscated\Important\DeadZoneInjector-3.1.0.jar"
+					"B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscated\Important\DeadZoneAPI-3.1.0.jar";
+

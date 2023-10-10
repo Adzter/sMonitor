@@ -1,0 +1,54 @@
+classpath    	"B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\jrt-fs.jar"
+		"B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\runelite-client-1.2.0.jar"
+		"B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\runelite-api-1.2.0.jar"
+            	"B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\http-api-1.2.0.jar"
+            	"B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\slf4j-simple-1.7.30.jar"
+		"B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\javax.inject-1.jar"
+            	"B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\slf4j-nop-1.7.30.jar"
+            	"B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\slf4j-api-1.7.25.jar"
+            	"B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\pf4j-3.2.0.jar"
+            	"B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\guice-4.2.3.jar"
+            	"B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\guava-28.2-jre.jar"
+	    	"B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\jsr305-3.0.2.jar"
+	    	"B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\lombok-1.18.12.jar";
+
+ignoreMissingReferences *.* +
+			;
+
+open                    "B:\Program Files\OpenOSRS\ExternalPlugins\release\*.jar";
+
+exclude			public *.^*^ containing {public static main(java.lang.String[])} public static main(java.lang.String[]) and
+                        enum *.* public static values() and
+                        enum *.* public static valueOf(java.lang.String) and
+                        *.^*^ extends java.sql.Driver and
+                        *.^*^ extends javax.swing.plaf.ComponentUI public static createUI(javax.swing.JComponent) and
+                        *.^*^ extends javax.swing.plaf.ComponentUI and
+                        *.^*^ containing {native *(*)} native *(*) +signatureClasses
+			;
+
+obfuscateReferencesInclude *.* Key
+			   ;
+
+obfuscateReferencesExclude *.* abstract *(*) and
+			   *.* @*.Override *(*) and
+			   *.* @*.Subscribe *(*) and
+			   *.* @*.Inject *(*)
+			   ;
+
+obfuscate               lineNumbers=delete //can specify delete, scramble or keep
+                        keepInnerClassInfo=false
+			keepGenericsInfo=false
+                        localVariables=delete //can specify delete, keepVisibleMethodParameters, keepVisibleMethodParametersIfNotObfuscated, keepMethodParametersIfNotObfuscated, obfuscate or keep
+			aggressiveMethodRenaming=true
+			methodParameterChanges=normal
+			methodParameters=delete //can specify delete, keepVisible, keepVisibleIfNotObfuscated, keepIfNotObfuscated, obfuscate or keep
+			obfuscateFlow=none //can change from none to light, normal, aggressive or extraAggressive
+                        encryptStringLiterals=none //can change from none to normal, aggressive, flowObfuscate or enhanced
+                        exceptionObfuscation=none //can change from none to light or heavy
+                        autoReflectionHandling=none //can change from none to normal
+                        obfuscateReferences=normal //can change from none to normal
+                        randomize=true //can change from false to true
+                        ;
+
+saveAll     archiveCompression=all 	"B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscated";
+

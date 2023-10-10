@@ -1,0 +1,121 @@
+sources:
+  - input: ./Obfuscated/Important/DeadZoneInjector-3.1.0.jar
+    output: ./Obfuscated/Blaur/Binscured/Injector/DeadZoneInjector-3.1.0.jar
+
+# Path to where the obfuscation mappings will be outputted. You can use this to deobfuscate stack traces.
+mappingFile: mappings.csv
+
+# List of jar files to be used for inheritance information
+# Directories can be specified, in which case they will be recursively searched for jar or zip files to include
+libraries:
+  - C:\Program Files\Java\jdk-11.0.8\lib\jrt-fs.jar
+  - B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\runelite-client-1.6.0.jar
+  - B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\runelite-api-1.6.0.jar
+  - B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\http-api-1.6.0.jar
+  - B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\javax.inject-1.jar
+  - B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\slf4j-simple-1.7.30.jar
+  - B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\slf4j-nop-1.7.30.jar
+  - B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\slf4j-api-1.7.25.jar
+  - B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\pf4j-3.2.0.jar
+  - B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\guice-4.2.3.jar
+  - B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\guava-28.2-jre.jar
+  #-	B:\Program Files\ZKM\Jars\jsr305-3.0.2.jar
+  - B:\Program Files\OpenOSRS\ExternalPlugins\release\Obfuscators\Jars\lombok-1.18.12.jar
+
+  
+#
+
+exclusions:
+  - net/runelite/plugins/DeadZoneAPI/DeadZoneAPI.startUp
+  - net/runelite/plugins/DeadZoneAPI/DeadZoneAPI.shutDown
+#
+
+# Rename identifiers
+# Deprecated - known to cause issues on complicated class structures
+# May work for you, but issues are not planned to be fixed, instead you should use proguard for remapping
+remap:
+  enabled: false
+  dictionary: "c0123456789abdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  classes: true # obfuscate class names
+  methods: true # obfuscate method names
+  fields: true # obfuscate field names
+  localVariables: true # obfuscate local variable names
+  obfuscateEnums: true # obfuscate enum names 
+  classPrefix: "2"
+  methodPrefix: ""
+  fieldPrefix: ""
+  localVariableName: "" # can be emptyto delete local variable names
+  aggressiveOverloading: false # aggresively overload names (may break)  
+  
+  # per transformer exclusions inherit the root exclusions and can add to them
+  exclusions:
+    - com/example/application/reflection
+#
+
+sourceStrip:
+  enabled: true
+  lineNumbers: REMOVE # or KEEP. Specifies whether to remove line numbers. Keeping them can help stack traces.
+
+# Remove extra information stored by the kotlin compiler
+kotlinMetadata:
+  enabled: false
+  type: REMOVE # or CENSOR. Either remove 
+
+# Crash reverse engineering tools like decompilers and dissasemblers
+crasher:
+  enabled: true
+  checksums: false # crash some zip archiving tools
+  decompilers: true # crash some decompilers
+  antiAsm: true # crash the ow2 ASM library. May not work in conjunction with tools like Spigot and Forge
+  recaf: true # hinder the functionality of the Recaf tool
+
+# Ture static method calls into dynamic ones. Makes static reverse engineering of execution flow significantly harder.
+indirection:
+  enabled: false
+
+# Encrypt strings and dynamically decrypt them at runtime (with anti tampering checks)
+stringObfuscation:
+  enabled: true
+
+# Substitute arithmetic operations with mixed boolean substitutes
+arithmetic:
+  enabled: true
+  repeat: 2 # number of times to apply the arithmetic obfuscation (exponential). Around 2-4 is good.
+
+# Obscure the control flow of the application
+flowObfuscation:
+  enabled: true
+  severity: 10 # lower = more severe, larger file size, slower peformance; higher = less severe...
+  mergeMethods: NONE # or EXISTING_CLASSES/NONE. Relocates methods into new classes, creating confusing methods that do not match the class they are situated in
+  arithmetic: false # old arithmetic obfuscation, now legacy
+  noverify: false # create unverifiable bytecode that is very hard to decompile or dissasemble. Requires output application to be run with -noverify argument.
+  java8: false # If the application only targets java 8 virtual machines by setting this to true the output application will NOT have to be run with -noverify
+
+# Add additional arguments to method parameters which will be used for flow obfuscation. 
+# This will make static analysis hard as the arguments will have to be retrieved from callsites
+methodParameter:
+  enabled: false
+
+# Some minor peformance optimisations
+optimisation:
+  enabled: true
+  mutableEnumValues: false # optimise enum values() method. May have unintended consequences if the returned array is modified
+
+# Obfuscate number constants
+numberObfuscation:
+  enabled: true
+
+# Ignore warning errors about classes not being present in classpath
+ignoreClassPathNotFound: true
+
+# Use the java class loader to load libraries (not recommended)
+useJavaClassloader: false
+
+# Shuffle output
+shuffleClasses: false
+shuffleMethods: false
+shuffleFields: false
+
+resetLineProgress: false
+printProgress: true
+watermark: false

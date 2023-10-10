@@ -1,0 +1,41 @@
+[2021.03.24 00:57:25] Using "jrt:/" as path to java.lang.Object (D)
+[2021.03.24 00:57:25] Zelix KlassMaster 13.0.0
+                      Unlimited 
+                      
+                      
+                      Copyright 1997-2019 Zelix Pty Ltd (47 078 740 093)
+                      All rights reserved
+[2021.03.24 00:57:25] Preprocessing ZKM Script file "B:\Program Files\Obfuscators\ZKM\configBinscure.txt"
+[2021.03.24 00:57:25] Parsing ZKM Script file "B:\Program Files\Obfuscators\ZKM\configBinscure.txt"
+ERROR: Invalid classpath in "classpath" statement at line 1 : "B:\Program Files\ZKM\Jars\javax.inject-1.jar" is not a valid path.
+[2021.03.24 00:57:26] Using "C:\Program Files\Java\jdk-11.0.8\lib\jrt-fs.jar" as path to java.lang.Object (E)
+[2021.03.24 00:57:26] Setting classpath to "C:\Program Files\Java\jdk-11.0.8\lib\jrt-fs.jar;B:\Program Files\runelite\runelite-client\build\libs\runelite-client-4.1.0.jar;B:\Program Files\runelite\build\libs\OpenOSRS-4.1.0.jar;B:\Program Files\runelite\http-api\build\libs\http-api-4.1.0.jar;C:\Users\Johnny\.gradle;B:\Program Files\runelite;B:\Program Files\runelite\runelite-api\build\libs\runelite-api-4.1.0.jar;B:\Program Files\Obfuscators\ZKM\Jars\slf4j-simple-1.7.30.jar;B:\Program Files\Obfuscators\ZKM\Jars\slf4j-nop-1.7.30.jar;B:\Program Files\Obfuscators\ZKM\Jars\slf4j-api-1.7.25.jar;B:\Program Files\Obfuscators\ZKM\Jars\pf4j-3.2.0.jar;B:\Program Files\Obfuscators\ZKM\Jars\guice-4.2.3.jar;B:\Program Files\Obfuscators\ZKM\Jars\guava-28.2-jre.jar;B:\Program Files\Obfuscators\ZKM\Jars\jsr305-3.0.2.jar;B:\Program Files\Obfuscators\ZKM\Jars\lombok-1.18.12.jar"
+[2021.03.24 00:57:26] Setting references to be ignored...
+[2021.03.24 00:57:26] Opening classes...
+MESSAGE: Skipping path 'B:\Program Files\OpenOSRS\ExternalPlugins\release\SuperBlaubeere-1.9.3.jar' because of parameter -"B:\Program Files\OpenOSRS\ExternalPlugins\release\SuperBlaubeere-1.9.3.jar"
+	MESSAGE: Class 'javax.inject.Inject' could not be found but it has been specified as able to be ignored. : '*.* +'
+	MESSAGE: Class 'net.runelite.rs.api.RSClient' could not be found but it has been specified as able to be ignored. : '*.* +'
+	MESSAGE: Class 'javax.inject.Singleton' could not be found but it has been specified as able to be ignored. : '*.* +'
+	MESSAGE: Class 'org.jetbrains.annotations.NotNull' could not be found but it has been specified as able to be ignored. : '*.* +'
+	MESSAGE: Class 'org.apache.commons.lang3.ArrayUtils' could not be found but it has been specified as able to be ignored. : '*.* +'
+API calls detected that may not be handled automatically...
+In class ByteArrayClassLoader
+    in method public java.lang.Class loadClass(java.lang.String)
+        ByteArrayClassLoader.findClass(java.lang.String)
+        java.lang.ClassLoader.loadClass(java.lang.String)
+    in method public java.lang.Class findClass(java.lang.String)
+        ByteArrayClassLoader.defineClass(java.lang.String, byte[], int, int, java.security.ProtectionDomain)
+In class StreamClassLoader
+    in method private java.lang.Class loadBytesToClass(byte[])
+        ByteArrayClassLoader.loadClass(java.lang.String)
+        java.lang.Class.getName()
+
+254 classes opened in 1 seconds. 124839K of memory used. 88152K of memory free.
+
+[2021.03.24 00:57:28] Setting exclusions...
+[2021.03.24 00:57:28] Setting obfuscate reference inclusions...
+[2021.03.24 00:57:28] Setting obfuscate reference exclusions...
+[2021.03.24 00:57:28] Obfuscating classes...
+	Using 'B:\Program Files\Obfuscators\ZKM\defaultExclude.txt' for default exclusions
+[2021.03.24 00:57:31] Saving 254 classes in "B:\Program Files\OpenOSRS\ExternalPlugins\release\hidden", "B:\Program Files\OpenOSRS\ExternalPlugins\release\hidden\Important\DeadZoneAPI-2.1.0.jar" and "B:\Program Files\OpenOSRS\ExternalPlugins\release\hidden\Important\DeadZoneInjector-2.1.0.jar"
+[2021.03.24 00:57:31] Terminating normally.
